@@ -288,5 +288,31 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementsByTagName("head")[0].appendChild(mf);
   })();
 </script>
+<script>
+(function () {
+  const KEY = 'theme';
+
+  function apply(theme) {
+    const isDark = theme === 'dark';
+    document.documentElement.classList.toggle('u-theme-dark', isDark);
+    document.body.classList.toggle('u-theme-dark', isDark);
+    localStorage.setItem(KEY, theme);
+  }
+
+  apply(localStorage.getItem(KEY) || 'light');
+
+  const btn = document.querySelector('.js-theme-toggle');
+  if (!btn) return;
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    const isDarkNow =
+      document.documentElement.classList.contains('u-theme-dark') ||
+      document.body.classList.contains('u-theme-dark');
+    apply(isDarkNow ? 'light' : 'dark');
+  });
+})();
+</script>
+
 </body>
 </html>
