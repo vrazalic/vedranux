@@ -266,8 +266,36 @@
       </section>
       <section id="4" class="contacts">
         <div class="form-block ipad w-form">
-          <iframe data-tally-src="https://tally.so/embed/rjOQbv?alignLeft=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="100" frameborder="0" marginheight="0" marginwidth="0" title="Get in touch"></iframe>
-          <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+          <form name="contact"
+            method="POST"
+            action="/"
+            data-netlify="true"
+            netlify-honeypot="company">
+
+        <input type="hidden" name="form-name" value="contact">
+
+        <input type="text" name="company" tabindex="-1" autocomplete="off"
+              aria-hidden="true"
+              style="position:absolute; left:-9999px">
+
+        <label>
+          Name *
+          <input type="text" name="name" required>
+        </label>
+
+        <label>
+          Email *
+          <input type="email" name="email" required>
+        </label>
+
+        <label>
+          Message *
+          <textarea name="message" required></textarea>
+        </label>
+
+        <button type="submit">Send message</button>
+      </form>
+
         </div>
       </section>
       <a href="#" class="sun_button_link js-theme-toggle w-inline-block">
