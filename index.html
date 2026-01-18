@@ -81,7 +81,7 @@
   }
 </style>
 </head>
-<body class="u-theme-dark">
+<body>
   <div data-collapse="tiny" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-white_ok w-nav">
     <div class="navbar-container">
       <section class="navigation_-top">
@@ -425,5 +425,31 @@
     document.getElementsByTagName("head")[0].appendChild(mf);
   })();
 </script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const STORAGE_KEY = 'theme'; // 'dark' | 'light'
+    const toggleBtn = document.querySelector('.js-theme-toggle');
+
+    function applyTheme(theme) {
+      document.body.classList.toggle('u-theme-dark', theme === 'dark');
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
+
+    // 1) INIT — default LIGHT, ali ako je user ranije izabrao DARK, učitaj to
+    const savedTheme = localStorage.getItem(STORAGE_KEY);
+    const initialTheme = savedTheme ? savedTheme : 'light';
+    applyTheme(initialTheme);
+
+    // 2) TOGGLE — klik na sunce / mjesec
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        const isDark = document.body.classList.contains('u-theme-dark');
+        applyTheme(isDark ? 'light' : 'dark');
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
