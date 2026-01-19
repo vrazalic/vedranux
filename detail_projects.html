@@ -73,7 +73,7 @@
   })();
 </script>
 </head>
-<body class="u-theme-dark">
+<body>
   <div class="page_wrap">
     <div data-collapse="tiny" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-white_ok w-nav">
       <div class="navbar-container">
@@ -287,6 +287,29 @@
                 <path d="M13.7561 12.9532H20.9248V16.2415H21.027C22.0248 14.3501 24.4635 12.3578 28.0984 12.3578C35.6667 12.3578 37.0635 17.3366 37.0635 23.8114V37H29.5931V25.306C29.5931 22.5166 29.5446 18.9299 25.7094 18.9299C21.82 18.9299 21.2266 21.9701 21.2266 25.1057V37H13.7561V12.9532Z" stroke="#3C3C3C"></path>
               </svg></div>
           </a>
+</script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var STORAGE_KEY = 'theme';
+    var root = document.documentElement;
+    var saved = localStorage.getItem(STORAGE_KEY);
+    var theme = saved === 'dark' ? 'dark' : 'light';
+
+    root.dataset.theme = theme;
+    if (!saved) {
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
+
+    var toggle = document.querySelector('.js-theme-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem(STORAGE_KEY, next);
+      });
+    }
+  });
         </div>
       </section>
     </div>

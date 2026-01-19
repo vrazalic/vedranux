@@ -12077,3 +12077,57 @@ body {
   z-index: 99999;
 }
 
+/* === Guides overlay overrides === */
+.guides.guides-toggle {
+  display: grid;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: fixed;
+  inset: 0%;
+  z-index: 9998;
+  transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.guides.guides-toggle.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+.guides.guides-toggle.is-visible,
+.guides.guides-toggle.is-visible * {
+  pointer-events: auto !important;
+}
+
+/* === Theme overrides (dataset-based) === */
+html[data-theme="dark"] {
+  background-color: var(--_themes---dark--background);
+  --_themes---dark--color: var(--black);
+  --_themes---dark--text: var(--grey-500);
+  --_themes---dark--background: var(--grey-1400);
+  --_themes---button--background: var(--blue--blue-300-mid-dark);
+  --_themes---button--text: var(--grey-1300);
+  --_themes---button--background-hover: var(--blue--blue-200);
+  --_themes---button--text-hover: var(--grey-1400);
+  --_themes---button--text_link_default: var(--grey-400);
+  --_themes---button--text_link_hover: var(--_themes---button--background);
+  --_themes---button--text_link_selected: var(--grey-200);
+  --_themes---borders--guides: var(--grey-600);
+  --_themes---button--navbar-link--hover: var(--trransparent);
+  --_themes---button--navbar-link--selected: var(--blue--blue-300-mid-dark);
+  --_themes---hero--text_blue: var(--blue--blue-300-mid-dark);
+  --_themes---hero--text_violet: var(--violet--violet-300-mid-dark);
+  --_themes---button--icon_bckg_hover: var(--grey-1300);
+  --_themes---hero--text_orange: var(--orange--orange-300-mid-dark);
+  --_themes---dark--shadow: var(--grey-1100);
+  --_themes---button--toggle-offset: 4rem;
+  --_themes---button--icon_symbol: var(--grey-600);
+  --_themes---button--text_link_visited: var(--blue--blue-500);
+  --_themes---borders--separators: var(--grey-600);
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--_themes---dark--background);
+}

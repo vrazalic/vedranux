@@ -83,7 +83,7 @@
   }
 </style>
 </head>
-<body class="u-theme-dark">
+<body>
   <div data-collapse="tiny" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-white_ok w-nav">
     <div class="navbar-container">
       <section class="navigation_-top">
@@ -205,12 +205,26 @@
   });
 </script>
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const themeToggle = document.querySelector('.js-theme-toggle');
-    themeToggle.addEventListener('click', function(event) {
-      event.preventDefault();
-      document.body.classList.toggle('u-theme-dark');
-    });
+  document.addEventListener('DOMContentLoaded', function () {
+    var STORAGE_KEY = 'theme';
+    var root = document.documentElement;
+    var saved = localStorage.getItem(STORAGE_KEY);
+    var theme = saved === 'dark' ? 'dark' : 'light';
+
+    root.dataset.theme = theme;
+    if (!saved) {
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
+
+    var toggle = document.querySelector('.js-theme-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem(STORAGE_KEY, next);
+      });
+    }
   });
 </script>
   <script>
