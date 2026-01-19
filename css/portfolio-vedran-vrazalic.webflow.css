@@ -12067,3 +12067,13 @@ body {
 .page_wrap {
   flex: 1;
 }
+.guides,
+.guides * {
+  pointer-events: none !important;
+}
+.js-guides-toggle {
+  pointer-events: auto !important;
+  position: relative;
+  z-index: 99999;
+}
+
