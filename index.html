@@ -75,14 +75,6 @@
 </script>
 </head>
 <body>
-<script>
-(function () {
-  try {
-    const isDark = document.documentElement.classList.contains('u-theme-dark');
-    document.body.classList.toggle('u-theme-dark', isDark);
-  } catch(e) {}
-})();
-</script>
   <div data-collapse="tiny" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-white_ok w-nav">
     <div class="navbar-container">
       <section class="navigation_-top">
@@ -387,12 +379,13 @@
   <script src="js/webflow.js" type="text/javascript"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var btn    = document.querySelector('.guides');
-    var guides = document.querySelector('.overlay-grid'); // ovo je <section class="guides guides-toggle">
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.querySelector('.js-guides-toggle');
+    var guides = document.querySelector('.guides');
+
     if (!btn || !guides) return;
 
-    btn.addEventListener('click', function(e) {
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       var showing = guides.classList.toggle('is-visible');
       btn.classList.toggle('active', showing);
@@ -400,25 +393,27 @@
   });
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  const btn = document.querySelector('.js-guides-toggle');
-  const guides = document.querySelector('.guides');        // wrapper
-  const grid = document.querySelector('.overlay-grid');    // actual grid
+  document.addEventListener('DOMContentLoaded', function () {
+    var STORAGE_KEY = 'theme';
+    var root = document.documentElement;
+    var saved = localStorage.getItem(STORAGE_KEY);
+    var theme = saved === 'dark' ? 'dark' : 'light';
 
-  if (!btn) return;
+    root.dataset.theme = theme;
+    if (!saved) {
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
 
-  btn.addEventListener('click', function (e) {
-    e.preventDefault();
-
-    // toggle on both (safe no matter which one your CSS is targeting)
-    let showing = false;
-
-    if (guides) showing = guides.classList.toggle('is-visible');
-    if (grid)   showing = grid.classList.toggle('is-visible') || showing;
-
-    btn.classList.toggle('active', showing);
+    var toggle = document.querySelector('.js-theme-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem(STORAGE_KEY, next);
+      });
+    }
   });
-});
 </script>
 </body>
 </html>

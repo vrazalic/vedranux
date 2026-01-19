@@ -108,5 +108,28 @@
     });
   });
 </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var STORAGE_KEY = 'theme';
+    var root = document.documentElement;
+    var saved = localStorage.getItem(STORAGE_KEY);
+    var theme = saved === 'dark' ? 'dark' : 'light';
+
+    root.dataset.theme = theme;
+    if (!saved) {
+      localStorage.setItem(STORAGE_KEY, theme);
+    }
+
+    var toggle = document.querySelector('.js-theme-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function (event) {
+        event.preventDefault();
+        var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+        root.dataset.theme = next;
+        localStorage.setItem(STORAGE_KEY, next);
+      });
+    }
+  });
+</script>
 </body>
 </html>
