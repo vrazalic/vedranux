@@ -92,6 +92,14 @@
 
 </head>
 <body>
+<script>
+(function () {
+  try {
+    const isDark = document.documentElement.classList.contains('u-theme-dark');
+    document.body.classList.toggle('u-theme-dark', isDark);
+  } catch(e) {}
+})();
+</script>
   <div class="w-embed">
     <style>
   html { font-size: 1.375rem; }

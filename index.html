@@ -39,10 +39,11 @@
   .guides.is-visible {
     opacity: 1;
   }
-  /* 4) Allow clicks on individual columns, if needed */
-  .guides .overlay-grid-column {
-    pointer-events: auto;
+  /* Make the guides visible when toggled */
+  .guides.guides-toggle.is-visible {
+  display: grid;
   }
+  
   /* 5) Active-button styling */
   .button-guides.active .guide-hover {
     color: #000; /* or any active color you prefer */
@@ -74,6 +75,14 @@
 </script>
 </head>
 <body>
+<script>
+(function () {
+  try {
+    const isDark = document.documentElement.classList.contains('u-theme-dark');
+    document.body.classList.toggle('u-theme-dark', isDark);
+  } catch(e) {}
+})();
+</script>
   <div data-collapse="tiny" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-white_ok w-nav">
     <div class="navbar-container">
       <section class="navigation_-top">
@@ -379,8 +388,8 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var btn    = document.querySelector('.js-guides-toggle');
-    var guides = document.querySelector('.guides'); // ovo je <section class="guides guides-toggle">
+    var btn    = document.querySelector('.guides');
+    var guides = document.querySelector('.overlay-grid'); // ovo je <section class="guides guides-toggle">
     if (!btn || !guides) return;
 
     btn.addEventListener('click', function(e) {
@@ -391,30 +400,25 @@
   });
 </script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const STORAGE_KEY = 'theme'; // 'dark' | 'light'
-    const toggleBtn = document.querySelector('.js-theme-toggle');
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.querySelector('.js-guides-toggle');
+  const guides = document.querySelector('.guides');        // wrapper
+  const grid = document.querySelector('.overlay-grid');    // actual grid
 
-    function applyTheme(theme) {
-      document.body.classList.toggle('u-theme-dark', theme === 'dark');
-      localStorage.setItem(STORAGE_KEY, theme);
-    }
+  if (!btn) return;
 
-    // 1) INIT — default LIGHT, ali ako je user ranije izabrao DARK, učitaj to
-    const savedTheme = localStorage.getItem(STORAGE_KEY);
-    const initialTheme = savedTheme ? savedTheme : 'light';
-    applyTheme(initialTheme);
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
 
-    // 2) TOGGLE — klik na sunce / mjesec
-    if (toggleBtn) {
-      toggleBtn.addEventListener('click', function (event) {
-        event.preventDefault();
-        const isDark = document.body.classList.contains('u-theme-dark');
-        applyTheme(isDark ? 'light' : 'dark');
-      });
-    }
+    // toggle on both (safe no matter which one your CSS is targeting)
+    let showing = false;
+
+    if (guides) showing = guides.classList.toggle('is-visible');
+    if (grid)   showing = grid.classList.toggle('is-visible') || showing;
+
+    btn.classList.toggle('active', showing);
   });
+});
 </script>
-
 </body>
 </html>
