@@ -1,6 +1,17 @@
 <!DOCTYPE html><!--  Last Published: Tue Jan 13 2026 19:57:39 GMT+0000 (Coordinated Universal Time)  -->
 <html data-wf-page="61042f015d772d26f5dbd5d1" data-wf-site="610292c88e721af32aac6e47">
 <head>
+  <script>
+  (function () {
+    try {
+      var saved = localStorage.getItem('theme');
+      document.documentElement.dataset.theme = saved === 'dark' ? 'dark' : 'light';
+    } catch (e) {
+      document.documentElement.dataset.theme = 'light';
+    }
+  })();
+</script>
+
   <meta charset="utf-8">
   <title>Portfolio Vedran Vrazalic</title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
@@ -73,7 +84,7 @@
   })();
 </script>
 </head>
-<body>
+<body class="case-study">
   <div class="page_wrap">
     <div data-collapse="tiny" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-white_ok w-nav">
       <div class="navbar-container">
@@ -267,50 +278,8 @@
       </section>
       <section class="section footer-white">
         <div class="footer-logo">
-          <a href="index.html" class="footer_logo w-inline-block">
-            <div class="logo_w w-embed"><svg width="100%" height="100%" viewbox="0 0 44 28" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.31758 28L0 0H5.98987L13.126 22.2865L20.2251 0H26.2149L16.8974 28H9.31758Z" fill="#currentColor"></path>
-                <path d="M34.6823 28H27.1025L23.0315 15.7686L25.9831 6.89844L30.911 22.2861L38.0099 0H43.9999L34.6823 28Z" fill="#currentColor"></path>
-              </svg></div>
-          </a>
-        </div>
-        <div class="copyright">Copyright © 2025 Vedran Vražalić</div>
-        <div class="social_links">
-          <a href="https://www.behance.net/vedran_v" class="behance_link w-inline-block">
-            <div class="behance_icon w-embed"><svg width="100%" height="100%" viewbox="0 0 50 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M44.7503 4.88705H32.4731V1.7865H44.752V4.88705H44.7503ZM24.2993 17.602C25.0915 18.8498 25.4873 20.3644 25.4873 22.143C25.4873 23.9819 25.0409 25.6321 24.1327 27.0891C23.5551 28.0535 22.838 28.8683 21.9762 29.5237C21.0054 30.2821 19.8567 30.8025 18.5353 31.0804C17.2107 31.3594 15.776 31.5 14.2309 31.5H0.5V0.5H15.2245C18.936 0.561446 21.5673 1.65475 23.1212 3.80205C24.0532 5.119 24.5155 6.69889 24.5155 8.53564C24.5155 10.4311 24.0478 11.9473 23.1065 13.0993C22.5827 13.7453 21.809 14.3326 20.7849 14.8635C22.3361 15.4409 23.5126 16.3504 24.2993 17.602ZM7.53151 12.7217H13.9832C15.3089 12.7217 16.3809 12.4654 17.2063 11.9534C18.0311 11.4419 18.4427 10.5329 18.4427 9.22761C18.4427 7.78555 17.8978 6.82843 16.805 6.36786C15.8659 6.04789 14.6643 5.88293 13.2063 5.88293H7.53151V12.7217ZM19.064 21.7001C19.064 20.0898 18.4166 18.9766 17.1246 18.3792C16.4022 18.0399 15.383 17.8661 14.0757 17.8539H7.53151V26.1154H13.9745C15.298 26.1154 16.3227 25.9394 17.062 25.5718C18.3954 24.8959 19.064 23.6099 19.064 21.7001ZM49.3057 16.6571C49.4538 17.6712 49.5213 19.1426 49.4941 21.0663H33.593C33.6807 23.2977 34.4385 24.8582 35.8753 25.7517C36.7421 26.3119 37.7929 26.5854 39.0228 26.5854C40.3202 26.5854 41.3775 26.2521 42.1914 25.5663C42.6352 25.2031 43.0261 24.69 43.3642 24.0428H49.1925C49.04 25.3609 48.3382 26.6978 47.0768 28.0562C45.1227 30.2152 42.3825 31.2979 38.8633 31.2979C35.9559 31.2979 33.3938 30.3851 31.1697 28.5655C28.9533 26.7393 27.8399 23.7782 27.8399 19.6702C27.8399 15.8179 28.8395 12.8696 30.8447 10.8175C32.8575 8.7615 35.4556 7.73795 38.6575 7.73795C40.5554 7.73795 42.2666 8.08282 43.7927 8.77645C45.3144 9.47062 46.5721 10.5634 47.5624 12.0647C48.4607 13.3866 49.0368 14.9156 49.3057 16.6571ZM43.5694 17.2356C43.4627 15.6922 42.9558 14.5247 42.0434 13.7265C41.1385 12.926 40.0082 12.5241 38.6591 12.5241C37.1913 12.5241 36.0577 12.9537 35.2519 13.7979C34.4413 14.6404 33.9366 15.7858 33.7297 17.2356H43.5694Z" stroke="#444444"></path>
-              </svg></div>
-          </a>
-          <a href="https://www.linkedin.com/in/vedran-vrazalic/" class="linkedin_link w-inline-block">
-            <div class="linkedin_svg w-embed"><svg width="100%" height="100%" viewbox="0 0 38 38" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1.59305 12.9533H9.06914V37H1.59305V12.9533ZM5.3313 1C7.72075 1 9.6626 2.94185 9.6626 5.33531C9.6626 7.72636 7.72075 9.66821 5.3313 9.66821C2.93624 9.66821 1 7.72636 1 5.33531C1 2.94185 2.93624 1 5.3313 1Z" stroke="#3C3C3C"></path>
-                <path d="M13.7561 12.9532H20.9248V16.2415H21.027C22.0248 14.3501 24.4635 12.3578 28.0984 12.3578C35.6667 12.3578 37.0635 17.3366 37.0635 23.8114V37H29.5931V25.306C29.5931 22.5166 29.5446 18.9299 25.7094 18.9299C21.82 18.9299 21.2266 21.9701 21.2266 25.1057V37H13.7561V12.9532Z" stroke="#3C3C3C"></path>
-              </svg></div>
-          </a>
-</script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var STORAGE_KEY = 'theme';
-    var root = document.documentElement;
-    var saved = localStorage.getItem(STORAGE_KEY);
-    var theme = saved === 'dark' ? 'dark' : 'light';
-
-    root.dataset.theme = theme;
-    if (!saved) {
-      localStorage.setItem(STORAGE_KEY, theme);
-    }
-
-    var toggle = document.querySelector('.js-theme-toggle');
-    if (toggle) {
-      toggle.addEventListener('click', function (event) {
-        event.preventDefault();
-        var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-        root.dataset.theme = next;
-        localStorage.setItem(STORAGE_KEY, next);
-      });
-    }
-  });
-        </div>
+  
+  <script src="js/site.js"></script>
       </section>
     </div>
   </div>

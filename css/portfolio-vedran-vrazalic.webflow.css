@@ -12078,6 +12078,7 @@ body {
 }
 
 /* === Guides overlay overrides === */
+.guides,
 .guides.guides-toggle {
   display: grid;
   opacity: 0;
@@ -12089,6 +12090,7 @@ body {
   transition: opacity 0.3s ease, visibility 0s linear 0.3s;
 }
 
+.guides.is-visible,
 .guides.guides-toggle.is-visible {
   opacity: 1;
   visibility: visible;
@@ -12096,6 +12098,8 @@ body {
   transition: opacity 0.3s ease;
 }
 
+.guides.is-visible,
+.guides.is-visible *,
 .guides.guides-toggle.is-visible,
 .guides.guides-toggle.is-visible * {
   pointer-events: auto !important;
@@ -12130,4 +12134,155 @@ html[data-theme="dark"] {
 
 html[data-theme="dark"] body {
   background-color: var(--_themes---dark--background);
+}
+
+/* === Global theme tokens === */
+:root {
+  --theme-bg: var(--_themes---dark--color);
+  --theme-text: var(--_themes---dark--text);
+  --theme-border: var(--_themes---borders--separators);
+  --sidebar-bg: rgba(0, 0, 0, 0.04);
+  --sidebar-border: rgba(0, 0, 0, 0.08);
+  --chart-max-width: 520px;
+  --guides-line-color: #3a3a3a;
+}
+
+html[data-theme="dark"] {
+  --theme-bg: var(--_themes---dark--background);
+  --theme-text: var(--_themes---dark--text);
+  --theme-border: var(--_themes---borders--separators);
+  --sidebar-bg: rgba(255, 255, 255, 0.06);
+  --sidebar-border: rgba(255, 255, 255, 0.12);
+  --chart-max-width: 480px;
+  --guides-line-color: #3a3a3a;
+}
+
+body {
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+}
+
+html,
+body {
+  color: var(--theme-text);
+}
+
+/* === Guides color consistency === */
+:root,
+html[data-theme="dark"] {
+  --_themes---borders--guides: var(--guides-line-color);
+}
+
+.overlay-grid-column {
+  border-color: var(--guides-line-color);
+}
+
+/* === Navbar container alignment === */
+.navbar-container {
+  max-width: clamp(1200px, 70vw, 1680px);
+  padding-left: clamp(1rem, 2vw, 2.5rem);
+  padding-right: clamp(1rem, 2vw, 2.5rem);
+}
+
+.navbar-white_ok {
+  z-index: 999;
+}
+
+/* === Hamburger menu (mobile/tablet) === */
+.nav-overlay {
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  inset: 0;
+  transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+  z-index: 998;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+body.nav-open .nav-overlay {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-white_ok.is-open .w-nav-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media screen and (max-width: 991px) {
+  .navbar-white_ok .w-nav-menu {
+    background-color: var(--theme-bg);
+    border-bottom: 1px solid var(--theme-border);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .navbar-white_ok.is-open .w-nav-menu {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .menu-button:focus-visible {
+    outline: 2px solid var(--_themes---button--background);
+    outline-offset: 3px;
+  }
+}
+
+/* === Case study sidebar (intentional look) === */
+.case-study .left-sidebar {
+  background-color: var(--sidebar-bg);
+  border-color: var(--sidebar-border);
+  opacity: 1;
+}
+
+/* === Charts sizing === */
+.case-study ._72-6,
+.case-study .image-64 {
+  width: min(100%, var(--chart-max-width));
+  max-width: var(--chart-max-width);
+  height: auto;
+}
+
+@media screen and (min-width: 1440px) {
+  .case-study ._72-6,
+  .case-study .image-64 {
+    max-width: 420px;
+  }
+}
+
+/* === Scroll progress bar === */
+.progress-bar,
+.progress-bar-ds {
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  will-change: transform;
+}
+
+/* === Contact form states === */
+form[data-form-state="loading"] button[type="submit"] {
+  opacity: 0.7;
+  cursor: progress;
+}
+
+form[data-form-state="success"] button[type="submit"] {
+  background-color: var(--_themes---button--background-hover);
+}
+
+form[data-form-state="error"] button[type="submit"] {
+  background-color: var(--orange--orange-300-mid-dark);
+}
+
+.form-status {
+  margin-top: 0.75rem;
+  font-size: var(--_fonts---body-s-14px);
+  color: var(--theme-text);
 }
