@@ -12053,3 +12053,17 @@ img {
   font-style: normal;
   font-display: swap;
 }
+/* === Sticky footer fix (About page) === */
+html, body {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page_wrap {
+  flex: 1;
+}
